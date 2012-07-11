@@ -1,0 +1,11 @@
+source :rubygems
+
+group :development do
+  gem 'rspec'
+
+  gem 'redcarpet'
+  gem 'yard'
+
+  gem 'bundler'
+  gem 'jeweler'
+end
