@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Unicode Scanner by RISCfuture</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">Unicode Scanner</h1>
+        <p class="header">Unicode-aware StringScanner implementation</p>
+
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/RISCfuture/unicode_scanner/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/RISCfuture/unicode_scanner/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/RISCfuture/unicode_scanner">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/RISCfuture">RISCfuture</a></p>
+
+
+      </header>
+      <section>
+        <h1>Unicode String Scanner</h1>
+
+<p>A Unicode-aware implementation of Ruby's <code>StringScanner</code>.</p>
+
+<table>
+<tr>
+<th align="left"></th>
+<th align="left"></th>
+</tr>
+<tr>
+<td align="left"><strong>Author</strong></td>
+<td align="left">Tim Morgan</td>
+</tr>
+<tr>
+<td align="left"><strong>Version</strong></td>
+<td align="left">1.0 (Jul 11, 2012)</td>
+</tr>
+<tr>
+<td align="left"><strong>License</strong></td>
+<td align="left">Released under the MIT license.</td>
+</tr>
+</table><h2>About</h2>
+
+<p>Did you know that <code>StringScanner</code> splits codepoints? Neither did I. This one
+doesn't.</p>
+
+<p><strong>When would I want to use this?</strong> When you want to use <code>StringScanner</code> on a
+Unicode (UTF-<em>n</em>) string.</p>
+
+<p><strong>When would I <em>not</em> want to use this?</strong> If you're interested in speed. This is
+slower than StringScanner because a) it's not written in native C, and b) it's
+slower to traverse Unicode strings anyway because characters can have varying
+byte sizes.</p>
+
+<h2>Installation</h2>
+
+<p>Simply add this gem to your project's <code>Gemfile</code>:</p>
+
+<div class="highlight">
+<pre><span class="n">gem</span> <span class="s1">'unicode_scanner'</span>
+</pre>
+</div>
+
+
+<h2>Usage</h2>
+
+<p>The <code>UnicodeScanner</code> object responds to exactly the same API as
+<a href="http://ruby-doc.org/stdlib-1.9.3/libdoc/strscan/rdoc/StringScanner.html">StringScanner</a>,
+with the exception of the following methods:</p>
+
+<ul>
+<li><code>getbyte</code></li>
+<li>any obsolete methods</li>
+</ul><p>For more information, see the {UnicodeScanner} class documentation.</p>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+		
+  </body>
+</html>
