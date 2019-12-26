@@ -13,52 +13,51 @@ Gem::Specification.new do |s|
   s.description = "An implementation of StringScanner that doesn't split multibyte characters."
   s.email = "git@timothymorgan.info"
   s.extra_rdoc_files = [
-    "LICENSE.txt",
-    "README.md"
+      "LICENSE.txt",
+      "README.md"
   ]
   s.files = [
-    ".document",
-    ".rspec",
-    ".rvmrc",
-    "Gemfile",
-    "Gemfile.lock",
-    "LICENSE.txt",
-    "README.md",
-    "Rakefile",
-    "VERSION",
-    "lib/unicode_scanner.rb",
-    "spec/spec_helper.rb",
-    "spec/unicode_scanner_spec.rb",
-    "unicode_scanner.gemspec"
+      ".document",
+      ".rspec",
+      ".rvmrc",
+      "Gemfile",
+      "Gemfile.lock",
+      "LICENSE.txt",
+      "README.md",
+      "Rakefile",
+      "VERSION",
+      "lib/unicode_scanner.rb",
+      "spec/spec_helper.rb",
+      "spec/unicode_scanner_spec.rb",
+      "unicode_scanner.gemspec"
   ]
   s.homepage = "http://github.com/RISCfuture/unicode_scanner"
-  s.licenses = ["MIT"]
-  s.require_paths = ["lib"]
+  s.licenses = %w[MIT]
+  s.require_paths = %w[lib]
   s.rubygems_version = "1.8.24"
   s.summary = "Unicode-aware implementation of StringScanner"
 
-  if s.respond_to? :specification_version then
+  if s.respond_to? :specification_version
     s.specification_version = 3
 
-    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_development_dependency(%q<rspec>, [">= 0"])
-      s.add_development_dependency(%q<redcarpet>, [">= 0"])
-      s.add_development_dependency(%q<yard>, [">= 0"])
-      s.add_development_dependency(%q<bundler>, [">= 0"])
-      s.add_development_dependency(%q<jeweler>, [">= 0"])
+    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0')
+      s.add_development_dependency('bundler', [">= 0"])
+      s.add_development_dependency('jeweler', [">= 0"])
+      s.add_development_dependency('redcarpet', [">= 0"])
+      s.add_development_dependency('rspec', [">= 0"])
+      s.add_development_dependency('yard', [">= 0"])
     else
-      s.add_dependency(%q<rspec>, [">= 0"])
-      s.add_dependency(%q<redcarpet>, [">= 0"])
-      s.add_dependency(%q<yard>, [">= 0"])
-      s.add_dependency(%q<bundler>, [">= 0"])
-      s.add_dependency(%q<jeweler>, [">= 0"])
+      s.add_dependency('bundler', [">= 0"])
+      s.add_dependency('jeweler', [">= 0"])
+      s.add_dependency('redcarpet', [">= 0"])
+      s.add_dependency('rspec', [">= 0"])
+      s.add_dependency('yard', [">= 0"])
     end
   else
-    s.add_dependency(%q<rspec>, [">= 0"])
-    s.add_dependency(%q<redcarpet>, [">= 0"])
-    s.add_dependency(%q<yard>, [">= 0"])
-    s.add_dependency(%q<bundler>, [">= 0"])
-    s.add_dependency(%q<jeweler>, [">= 0"])
+    s.add_dependency('rspec', [">= 0"])
+    s.add_dependency('rspec', [">= 0"])
+    s.add_dependency('yard', [">= 0"])
+    s.add_dependency('yard', [">= 0"])
+    s.add_dependency('yard', [">= 0"])
   end
 end
-
