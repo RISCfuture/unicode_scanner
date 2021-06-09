@@ -1,6 +1,6 @@
-require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
+require File.expand_path("#{File.dirname(__FILE__)}/spec_helper")
 
-describe UnicodeScanner do
+RSpec.describe UnicodeScanner do
   it "should pass all the class-level examples" do
     s = described_class.new('This is an example string')
     expect(s.eos?).to eq(false)
