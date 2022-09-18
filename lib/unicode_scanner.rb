@@ -165,8 +165,9 @@ class UnicodeScanner
   #   s.bol?           # => true
 
   def beginning_of_line?
-    return nil if @current > @string.length
-    return true if @current == 0
+    return nil if @current > @string.size
+    return true if @current.zero?
+
     return @string[@current - 1] == "\n"
   end
 
@@ -259,7 +260,8 @@ class UnicodeScanner
 
   def getch
     return nil if eos?
-    do_scan /./u, true, true, true
+
+    do_scan(/./u, true, true, true)
   end
 
   # Returns a string that represents the UnicodeScanner object, showing:
@@ -277,14 +279,23 @@ class UnicodeScanner
   #   s.inspect # -> '#<UnicodeScanner 10/21 "...ec 12" @ " 1975...">'
 
   def inspect
-    return "#<#{self.class.to_s} (uninitialized)>" if @string.nil?
-    return "#<#{self.class.to_s} fin>" if eos?
+    return "#<#{self.class} (uninitialized)>" if @string.nil?
+    return "#<#{self.class} fin>" if eos?
 
-    if @current == 0
-      return "#<%s %d/%d @ %s>" % [self.class.to_s, @current, @string.length, inspect_after.inspect]
+    if @current.zero?
+      return format("#<%{class} %<cur>d/%<len>d @ %{after}>",
+                    class: self.class.to_s,
+                    cur:   @current,
+                    len:   @string.length,
+                    after: inspect_after.inspect)
     end
 
-    "#<%s %d/%d %s @ %s>" % [self.class.to_s, @current, @string.length, inspect_before.inspect, inspect_after.inspect]
+    format("#<%{class} %<cur>d/%<len>d %{before} @ %{after}>",
+           class:  self.class.to_s,
+           cur:    @current,
+           len:    @string.length,
+           before: inspect_before.inspect,
+           after:  inspect_after.inspect)
   end
 
   # Tests whether the given `pattern` is matched from the current scan pointer.
@@ -311,6 +322,7 @@ class UnicodeScanner
 
   def matched
     return nil unless @matched
+
     @matches[0]
   end
 
@@ -335,6 +347,7 @@ class UnicodeScanner
 
   def matched_size
     return nil unless @matched
+
     @matches.end(0) - @matches.begin(0)
   end
 
@@ -351,6 +364,7 @@ class UnicodeScanner
 
   def peek(len)
     return '' if eos?
+
     @string[@current, len]
   end
 
@@ -384,9 +398,10 @@ class UnicodeScanner
   #   s.rest               # -> "ring"
 
   def pos=(n)
-    n += @string.length if n < 0
-    raise RangeError, "index out of range" if n < 0
+    n += @string.length if n.negative?
+    raise RangeError, "index out of range" if n.negative?
     raise RangeError, "index out of range" if n > @string.length
+
     @current = n
   end
 
@@ -401,6 +416,7 @@ class UnicodeScanner
 
   def post_match
     return nil unless @matched
+
     @string[@previous + @matches.end(0), @string.length]
   end
 
@@ -415,6 +431,7 @@ class UnicodeScanner
 
   def pre_match
     return nil unless @matched
+
     @string[0, @previous + @matches.begin(0)]
   end
 
@@ -430,6 +447,7 @@ class UnicodeScanner
 
   def rest
     return '' if eos?
+
     return @string[@current, @string.length]
   end
 
@@ -437,6 +455,7 @@ class UnicodeScanner
 
   def rest_size
     return 0 if eos?
+
     @string.length - @current
   end
 
@@ -550,7 +569,7 @@ class UnicodeScanner
 
   # @return [String] The string being scanned.
 
-  def string() @string end
+  attr_reader :string
 
   # Changes the string being scanned to `str` and resets the scanner.
   #
@@ -561,7 +580,6 @@ class UnicodeScanner
     @string  = str
     @matched = false
     @current = 0
-    str
   end
 
   # Set the scan pointer to the end of the string and clear matching data.
@@ -586,6 +604,7 @@ class UnicodeScanner
 
   def unscan
     raise ScanError, "unscan failed: previous match record not exist" unless @matched
+
     @current = @previous
     @matched = false
     self
@@ -602,7 +621,7 @@ class UnicodeScanner
     @matches = regex.match(@string[@current, @string.length])
     return nil unless @matches
 
-    if head_only && @matches.begin(0) > 0
+    if head_only && @matches.begin(0).positive?
       @matches = nil
       return nil
     end
@@ -618,8 +637,8 @@ class UnicodeScanner
     end
   end
 
-  def inspect_before # inspect1
-    return '' if @current == 0
+  def inspect_before
+    return '' if @current.zero?
 
     str = String.new
     len = 0
@@ -635,7 +654,7 @@ class UnicodeScanner
     return str
   end
 
-  def inspect_after # inspect2
+  def inspect_after
     return '' if eos?
 
     str = String.new

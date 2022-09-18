@@ -1,12 +1,10 @@
-# encoding: utf-8
-
 require 'rubygems'
 require 'bundler'
 begin
   Bundler.setup(:default, :development)
 rescue Bundler::BundlerError => e
-  $stderr.puts e.message
-  $stderr.puts "Run `bundle install` to install missing gems"
+  warn e.message
+  warn "Run `bundle install` to install missing gems"
   exit e.status_code
 end
 require 'rake'
@@ -17,8 +15,8 @@ Jeweler::Tasks.new do |gem|
   gem.name        = "unicode_scanner"
   gem.homepage    = "http://github.com/RISCfuture/unicode_scanner"
   gem.license     = "MIT"
-  gem.summary     = %Q{Unicode-aware implementation of StringScanner}
-  gem.description = %Q{An implementation of StringScanner that doesn't split multibyte characters.}
+  gem.summary     = %(Unicode-aware implementation of StringScanner)
+  gem.description = %(An implementation of StringScanner that doesn't split multibyte characters.)
   gem.email       = "git@timothymorgan.info"
   gem.authors     = ["Tim Morgan"]
   # dependencies defined in Gemfile
@@ -49,5 +47,5 @@ YARD::Rake::YardocTask.new('doc') do |doc|
   doc.options << '-o' << 'doc'
   doc.options << '--title' << 'Unicode String Scanner Documentation'
 
-  doc.files = %w( lib/**/* README.md )
+  doc.files = %w[lib/**/* README.md]
 end
