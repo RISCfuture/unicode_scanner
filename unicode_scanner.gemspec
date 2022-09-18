@@ -3,15 +3,18 @@
 # Instead, edit Jeweler::Tasks in Rakefile, and run 'rake gemspec'
 # -*- encoding: utf-8 -*-
 
-Gem::Specification.new do |s|
-  s.name = "unicode_scanner"
-  s.version = "1.0.0"
+# stub: unicode_scanner 1.0.1 ruby lib
 
-  s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Tim Morgan"]
-  s.date = "2012-07-12"
-  s.description = "An implementation of StringScanner that doesn't split multibyte characters."
-  s.email = "git@timothymorgan.info"
+Gem::Specification.new do |s|
+  s.name = "unicode_scanner".freeze
+  s.version = "1.0.1"
+
+  s.required_rubygems_version = Gem::Requirement.new(">= 0".freeze) if s.respond_to? :required_rubygems_version=
+  s.require_paths = ["lib".freeze]
+  s.authors = ["Tim Morgan".freeze]
+  s.date = "2019-12-26"
+  s.description = "An implementation of StringScanner that doesn't split multibyte characters.".freeze
+  s.email = "git@timothymorgan.info".freeze
   s.extra_rdoc_files = [
       "LICENSE.txt",
       "README.md"
@@ -19,7 +22,9 @@ Gem::Specification.new do |s|
   s.files = [
       ".document",
       ".rspec",
-      ".rvmrc",
+      ".ruby-gemset",
+      ".ruby-version",
+      ".travis.yml",
       "Gemfile",
       "Gemfile.lock",
       "LICENSE.txt",
@@ -31,33 +36,26 @@ Gem::Specification.new do |s|
       "spec/unicode_scanner_spec.rb",
       "unicode_scanner.gemspec"
   ]
-  s.homepage = "http://github.com/RISCfuture/unicode_scanner"
-  s.licenses = %w[MIT]
-  s.require_paths = %w[lib]
-  s.rubygems_version = "1.8.24"
-  s.summary = "Unicode-aware implementation of StringScanner"
+  s.homepage = "http://github.com/RISCfuture/unicode_scanner".freeze
+  s.licenses = ["MIT".freeze]
+  s.rubygems_version = "3.1.2".freeze
+  s.summary = "Unicode-aware implementation of StringScanner".freeze
 
   if s.respond_to? :specification_version
-    s.specification_version = 3
+    s.specification_version = 4
+  end
 
-    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0')
-      s.add_development_dependency('bundler', [">= 0"])
-      s.add_development_dependency('jeweler', [">= 0"])
-      s.add_development_dependency('redcarpet', [">= 0"])
-      s.add_development_dependency('rspec', [">= 0"])
-      s.add_development_dependency('yard', [">= 0"])
-    else
-      s.add_dependency('bundler', [">= 0"])
-      s.add_dependency('jeweler', [">= 0"])
-      s.add_dependency('redcarpet', [">= 0"])
-      s.add_dependency('rspec', [">= 0"])
-      s.add_dependency('yard', [">= 0"])
-    end
+  if s.respond_to? :add_runtime_dependency
+    s.add_development_dependency('bundler'.freeze, [">= 0"])
+    s.add_development_dependency('jeweler'.freeze, [">= 0"])
+    s.add_development_dependency('redcarpet'.freeze, [">= 0"])
+    s.add_development_dependency('rspec'.freeze, [">= 0"])
+    s.add_development_dependency('yard'.freeze, [">= 0"])
   else
-    s.add_dependency('rspec', [">= 0"])
-    s.add_dependency('rspec', [">= 0"])
-    s.add_dependency('yard', [">= 0"])
-    s.add_dependency('yard', [">= 0"])
-    s.add_dependency('yard', [">= 0"])
+    s.add_dependency('bundler'.freeze, [">= 0"])
+    s.add_dependency('jeweler'.freeze, [">= 0"])
+    s.add_dependency('redcarpet'.freeze, [">= 0"])
+    s.add_dependency('rspec'.freeze, [">= 0"])
+    s.add_dependency('yard'.freeze, [">= 0"])
   end
 end
