@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # UnicodeScanner provides for Unicode-aware lexical scanning operations on a
 # `String`.  Here is an example of its usage:
 #
@@ -363,7 +365,7 @@ class UnicodeScanner
   #   s.peek(7)          # => "test st"
 
   def peek(len)
-    return '' if eos?
+    return "" if eos?
 
     @string[@current, len]
   end
@@ -446,7 +448,7 @@ class UnicodeScanner
   #   pointer). If there is no more data (`eos? = true`), it returns `""`.
 
   def rest
-    return '' if eos?
+    return "" if eos?
 
     return @string[@current, @string.length]
   end
@@ -630,21 +632,20 @@ class UnicodeScanner
 
     @previous = @current
     @current += @matches.end(0) if advance_pointer
-    if return_string
-      return @string[@previous, @matches.end(0)]
-    else
-      return @matches.end(0)
-    end
+
+    return @string[@previous, @matches.end(0)] if return_string
+
+    return @matches.end(0)
   end
 
   def inspect_before
-    return '' if @current.zero?
+    return "" if @current.zero?
 
-    str = String.new
+    str = +""
     len = 0
 
     if @current > INSPECT_LENGTH
-      str << '...'
+      str << "..."
       len = INSPECT_LENGTH
     else
       len = @current
@@ -655,14 +656,14 @@ class UnicodeScanner
   end
 
   def inspect_after
-    return '' if eos?
+    return "" if eos?
 
-    str = String.new
+    str = +""
     len = @string.length - @current
     if len > INSPECT_LENGTH
       len = INSPECT_LENGTH
       str << @string[@current, len]
-      str << '...'
+      str << "..."
     else
       str << @string[@current, len]
     end
